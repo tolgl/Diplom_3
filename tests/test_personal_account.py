@@ -26,7 +26,7 @@ class TestPersonalAccount:
         login_page.click_on_button_login()
         main_page.click_on_button_personal_account()
         personal_account_page = PersonalAccountPageHelper(driver)
-        actual_result = personal_account_page.gey_text_link_history_orders()
+        actual_result = personal_account_page.get_text_link_history_orders()
 
         assert 'account/profile' in driver.current_url
         assert actual_result == 'История заказов'
