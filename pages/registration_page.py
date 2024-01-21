@@ -6,7 +6,7 @@ import allure
 
 class RegistrationPageHelper(BasePage):
 
-    @allure.step('Заполнение поля "Имя"')
+    @allure.step('Заполняем поле "Имя" на странице регистрации')
     def filling_field_name(self, name):
         self.find_element(RegistrationPageLocators.field_name, wait_time=5).send_keys(name)
 
