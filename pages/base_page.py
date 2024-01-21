@@ -20,3 +20,7 @@ class BasePage:
     def wait_clickable_element(self, locator, wait_time=10):
         return WebDriverWait(self.driver, wait_time).until(
             expected_conditions.element_to_be_clickable(locator))
+
+    def wait_change_url(self, url_contains, wait_time=10):
+        return WebDriverWait(self.driver, wait_time).until(
+            expected_conditions.url_contains(url_contains))
