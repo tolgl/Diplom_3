@@ -1,5 +1,3 @@
-import time
-
 import allure
 from pages.main_page import MainPageHelper
 from pages.login_page import LoginPageHelper
