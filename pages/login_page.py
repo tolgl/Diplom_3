@@ -26,3 +26,7 @@ class LoginPageHelper(BasePage):
     @allure.step('Нажимаем на кнопку "Войти" на странице авторизации')
     def click_on_button_login(self):
         self.wait_clickable_element(LoginPageLocators.button_login, wait_time=5).click()
+
+    @allure.step('Получаем текст заголовка "Вход"')
+    def get_text_h2(self):
+        return self.find_element(LoginPageLocators.h2, wait_time=5).text
