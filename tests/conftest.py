@@ -1,8 +1,9 @@
+import json
 import pytest
-import random
-import string
+import requests
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from test_data import generate_random_string
 
 
 @pytest.fixture(params=['firefox', 'chrome'])
@@ -20,12 +21,31 @@ def driver(request):
 
 
 @pytest.fixture()
-def generation_user_data():
-    domain = ['ya.ru', 'gmail.com', 'bk.ru']
-    random_login = ''.join(random.choices(string.ascii_lowercase + string.digits, k=random.randint(3, 10)))
-    random_domain = random.choice(domain)
-    name = ''.join(random.choices(string.ascii_lowercase, k=random.randint(3, 10)))
-    email = f'{random_login}@{random_domain}'
-    password = ''.join(random.choices(string.ascii_lowercase + string.digits, k=random.randint(6, 10)))
+def creating_new_user():
 
-    return [name, email, password]
+    login_pass = []
+    # генерируем емаил, пароль и имя пользователя
+    email = f'{generate_random_string(7)}@mail.ru'
+    password = generate_random_string(6)
+    name = generate_random_string(6)
+
+    # собираем тело запроса
+    payload = {
+        "email": email,
+        "password": password,
+        "name": name
+    }
+
+    # отправляем запрос на создание пользователя
+    response = requests.post(url='https://stellarburgers.nomoreparties.site/api/auth/register',
+                             data=json.dumps(payload),
+                             headers={"Content-type": "application/json"})
+
+    login_pass.append(email)
+    login_pass.append(password)
+
+    yield login_pass
+
+    # удаляем пользователя после выполнения теста
+    requests.delete(url='https://stellarburgers.nomoreparties.site/api/auth/user',
+                    headers={"Authorization": response.json()['accessToken']})
