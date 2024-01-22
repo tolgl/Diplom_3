@@ -10,10 +10,6 @@ class LoginPageHelper(BasePage):
     def click_on_button_recovery_password(self):
         self.wait_clickable_element(LoginPageLocators.button_password_recovery, wait_time=5).click()
 
-    @allure.step('Нажатие на ccылку "Зарегистрироваться"')
-    def click_link_registration(self):
-        self.wait_clickable_element(LoginPageLocators.link_registration, wait_time=3).click()
-
     @allure.step('Заполняем поле "Email" на странице авторизации')
     def filling_field_email_on_login_page(self, email):
         self.wait_change_url(url_contains='login')
