@@ -7,3 +7,4 @@ class LoginPageLocators:
     field_email = (By.XPATH, "//input[@name='name']")
     field_password = (By.XPATH, "//input[@name='Пароль']")
     button_login = (By.XPATH, ".//button[text() = 'Войти']")
+    h2 = (By.XPATH, ".//h2[text()='Вход']")
