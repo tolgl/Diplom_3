@@ -26,6 +26,6 @@ class PasswordRecoveryPageHelper(BasePage):
     def click_field_new_password(self):
         self.wait_clickable_element(PasswordRecoveryPageLocators.field_new_password, wait_time=3).click()
 
-    @allure.step('Получение класса поля "Пароль"')
+    @allure.step('Получаем класс поля "Пароль"')
     def get_class_field_new_password(self):
         return self.find_element(PasswordRecoveryPageLocators.field_new_password, wait_time=3).get_attribute('class')
