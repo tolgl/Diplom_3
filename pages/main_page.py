@@ -54,3 +54,11 @@ class MainPageHelper(BasePage):
     @allure.step('Получаем класс модального окна оформленного заказа')
     def get_class_modal_order(self):
         return self.find_element(MainPageLocators.modal_order, wait_time=3).get_attribute('class')
+
+    @allure.step('Закрываем модальное окно с заказом')
+    def click_on_button_close_modal_order(self):
+        self.find_element(MainPageLocators.button_close_modal_order, wait_time=3).click()
+
+    @allure.step('Получаем номер созданного заказа в модальном окне')
+    def get_number_order_in_modal_order(self):
+        return self.find_element(MainPageLocators.number_order, wait_time=3).text

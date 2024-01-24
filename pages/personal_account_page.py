@@ -17,3 +17,7 @@ class PersonalAccountPageHelper(BasePage):
     @allure.step('Нажимаем на кнопку "Выход" в ЛК')
     def click_button_logout(self):
         self.find_element(PersonalAccountPageLocators.button_logout, wait_time=5).click()
+
+    @allure.step('Получение номера заказа в истории заказов')
+    def get_number_order_in_history_order(self):
+        return self.find_element(PersonalAccountPageLocators.number_order, wait_time=5).text
