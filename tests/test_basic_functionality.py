@@ -13,6 +13,7 @@ class TestBasicFunctionality:
     def test_click_link_constructor(self, driver):
         main_page = MainPageHelper(driver)
         main_page.go_to_page()
+        main_page.wait_hidden_loader()
         main_page.click_on_button_personal_account()
         main_page.click_on_link_constructor()
         actual_result = main_page.get_text_h1()
@@ -24,6 +25,7 @@ class TestBasicFunctionality:
     def test_click_link_order_feed(self, driver):
         main_page = MainPageHelper(driver)
         main_page.go_to_page()
+        main_page.wait_hidden_loader()
         main_page.click_on_link_order_feed()
         order_feed_page = OrderFeedPageHelper(driver)
         actual_result = order_feed_page.get_text_h1()
@@ -35,15 +37,17 @@ class TestBasicFunctionality:
     def test_open_modal_ingredient(self, driver):
         main_page = MainPageHelper(driver)
         main_page.go_to_page()
+        main_page.wait_hidden_loader()
         main_page.click_on_ingredient()
         actual_result = main_page.get_class_modal_ingredient()
 
         assert 'Modal_modal_opened__3ISw4' in actual_result
 
     @allure.title('Проверка закрытия модального окна "Детали ингредиента" кликом на крестик')
-    def test_open_modal_ingredient(self, driver):
+    def test_close_modal_ingredient(self, driver):
         main_page = MainPageHelper(driver)
         main_page.go_to_page()
+        main_page.wait_hidden_loader()
         main_page.click_on_ingredient()
         main_page.click_on_button_close_ingredient()
         actual_result = main_page.get_class_modal_ingredient()
@@ -55,7 +59,7 @@ class TestBasicFunctionality:
     def test_counter_ingredient_bun(self, driver):
         main_page = MainPageHelper(driver)
         main_page.go_to_page()
-        time.sleep(11)
+        main_page.wait_hidden_loader()
         main_page.add_ingredient_to_order()
         actual_result = main_page.get_count_ingredient()
 
@@ -65,7 +69,7 @@ class TestBasicFunctionality:
     def test_make_order_authorized_user_with_ingredient(self, driver, creating_new_user):
         main_page = MainPageHelper(driver)
         main_page.go_to_page()
-        time.sleep(1)
+        main_page.wait_hidden_loader()
         main_page.click_on_button_personal_account()
         login_page = LoginPageHelper(driver)
         login_page.filling_field_email_on_login_page(email=creating_new_user[0])

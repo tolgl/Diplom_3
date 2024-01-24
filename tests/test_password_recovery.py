@@ -9,6 +9,7 @@ class TestPasswordRecovery:
     def test_redirection_on_recovery_password_page(self, driver):
         main_page = MainPageHelper(driver)
         main_page.go_to_page()
+        main_page.wait_hidden_loader()
         main_page.click_on_button_personal_account()
         login_page = LoginPageHelper(driver)
         login_page.click_on_button_recovery_password()
@@ -22,9 +23,11 @@ class TestPasswordRecovery:
     def test_password_recovery_with_filled_email(self, driver):
         main_page = MainPageHelper(driver)
         main_page.go_to_page()
+        main_page.wait_hidden_loader()
         main_page.click_on_button_personal_account()
         login_page = LoginPageHelper(driver)
         login_page.click_on_button_recovery_password()
+        login_page.wait_hidden_loader()
         password_recovery_page = PasswordRecoveryPageHelper(driver)
         password_recovery_page.filling_email('test@test.ru')
         password_recovery_page.click_button_confirm_password_recovery()
@@ -37,12 +40,15 @@ class TestPasswordRecovery:
     def test_check_activity_field_new_password(self, driver):
         main_page = MainPageHelper(driver)
         main_page.go_to_page()
+        main_page.wait_hidden_loader()
         main_page.click_on_button_personal_account()
         login_page = LoginPageHelper(driver)
         login_page.click_on_button_recovery_password()
+        login_page.wait_hidden_loader()
         password_recovery_page = PasswordRecoveryPageHelper(driver)
         password_recovery_page.filling_email('test@test.ru')
         password_recovery_page.click_button_confirm_password_recovery()
+        password_recovery_page.wait_hidden_loader()
         password_recovery_page.click_field_new_password()
         actual_result = password_recovery_page.get_class_field_new_password()
 
