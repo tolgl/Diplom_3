@@ -1,6 +1,7 @@
 import allure
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
+from locators.base_page_locators import BasePageLocators
 
 
 class BasePage:
@@ -24,3 +25,7 @@ class BasePage:
     def wait_change_url(self, url_contains, wait_time=10):
         return WebDriverWait(self.driver, wait_time).until(
             expected_conditions.url_contains(url_contains))
+
+    def wait_hidden_loader(self):
+        return WebDriverWait(self.driver, 5).until(
+            expected_conditions.invisibility_of_element(BasePageLocators.loader))
