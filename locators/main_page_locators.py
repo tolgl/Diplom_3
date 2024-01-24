@@ -13,3 +13,5 @@ class MainPageLocators:
     ingredient_counter = (By.XPATH, ".//a[@href='/ingredient/61c0c5a71d1f82001bdaaa6d']//p")
     button_make_order = (By.XPATH, ".//button[text()='Оформить заказ']")
     modal_order = (By.XPATH, ".//p[text()='идентификатор заказа']/parent::div/parent::div/parent::section")
+    button_close_modal_order = (By.XPATH, ".//section[1]/div[1]/button")
+    number_order = (By.XPATH, ".//p[text()='идентификатор заказа']/parent::div/h2")
