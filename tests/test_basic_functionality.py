@@ -1,7 +1,5 @@
 import time
-
 import allure
-
 from pages.login_page import LoginPageHelper
 from pages.main_page import MainPageHelper
 from pages.order_feed_page import OrderFeedPageHelper
@@ -77,9 +75,11 @@ class TestBasicFunctionality:
         login_page.click_on_button_login()
         main_page.add_ingredient_to_order()
         main_page.click_on_button_make_order()
-        actual_result = main_page.get_class_modal_order()
+        time.sleep(1)
+        actual_result = main_page.get_number_order_in_modal_order()
 
-        assert 'Modal_modal_opened__3ISw4' in actual_result
+        assert 'Modal_modal_opened__3ISw4' in main_page.get_class_modal_order()
+        assert actual_result != '9999'
 
     @allure.title('Проверка создания заказа без ингредиентов под авторизованным пользователем')
     def test_make_order_authorized_user_without_ingredient(self, driver, creating_new_user):
