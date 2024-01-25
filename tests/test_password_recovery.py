@@ -19,7 +19,7 @@ class TestPasswordRecovery:
         assert 'forgot-password' in driver.current_url
         assert actual_result == 'Восстановление пароля'
 
-    @allure.title('Проверка нажатия на кнопку "Восстановить" с введенным email"')
+    @allure.title('Проверка нажатия на кнопку "Восстановить" с введенным email')
     def test_password_recovery_with_filled_email(self, driver):
         main_page = MainPageHelper(driver)
         main_page.go_to_page()
