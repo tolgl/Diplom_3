@@ -1,7 +1,6 @@
 from locators.main_page_locators import MainPageLocators
 from pages.base_page import BasePage
 from selenium.webdriver import ActionChains
-
 import allure
 
 
@@ -37,11 +36,14 @@ class MainPageHelper(BasePage):
 
     @allure.step('Добавляем ингредиент в заказ')
     def add_ingredient_to_order(self):
-        draggable = self.find_element(MainPageLocators.first_ingredient_bun, wait_time=5)
-        droppable = self.find_element(MainPageLocators.burger_constructor, wait_time=5)
-        ActionChains(self.driver) \
-            .drag_and_drop(draggable, droppable) \
-            .perform()
+        drag = self.find_element(MainPageLocators.first_ingredient_bun, wait_time=5)
+        drop = self.find_element(MainPageLocators.burger_constructor, wait_time=5)
+
+        action = ActionChains(self.driver)
+        action.click_and_hold(drag)
+        action.move_to_element(drop)
+        action.release()
+        action.perform()
 
     @allure.step('Получаем количество ингредиента')
     def get_count_ingredient(self):
