@@ -34,6 +34,7 @@ class TestOrderFeed:
         login_page.click_on_button_login()
         main_page.add_ingredient_to_order()
         main_page.click_on_button_make_order()
+        main_page.wait_hidden_loader()
         main_page.click_on_button_close_modal_order()
         main_page.wait_hidden_loader()
         main_page.click_on_button_personal_account()
