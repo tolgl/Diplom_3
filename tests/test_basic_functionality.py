@@ -1,5 +1,7 @@
 import time
 import allure
+
+from pages.base_page import BasePage
 from pages.login_page import LoginPageHelper
 from pages.main_page import MainPageHelper
 from pages.order_feed_page import OrderFeedPageHelper
@@ -15,8 +17,10 @@ class TestBasicFunctionality:
         main_page.click_on_button_personal_account()
         main_page.click_on_link_constructor()
         actual_result = main_page.get_text_h1()
+        base_page = BasePage(driver)
+        current_url = base_page.get_current_url()
 
-        assert driver.current_url == main_page.base_url
+        assert current_url == main_page.base_url
         assert actual_result == 'Соберите бургер'
 
     @allure.title('Проверка нажатия на ссылку "Лента заказов"')
@@ -27,8 +31,10 @@ class TestBasicFunctionality:
         main_page.click_on_link_order_feed()
         order_feed_page = OrderFeedPageHelper(driver)
         actual_result = order_feed_page.get_text_h1()
+        base_page = BasePage(driver)
+        current_url = base_page.get_current_url()
 
-        assert '/feed' in driver.current_url
+        assert '/feed' in current_url
         assert actual_result == 'Лента заказов'
 
     @allure.title('Проверка открытия модального окна "Детали ингредиента"')
@@ -49,9 +55,11 @@ class TestBasicFunctionality:
         main_page.click_on_ingredient()
         main_page.click_on_button_close_ingredient()
         actual_result = main_page.get_class_modal_ingredient()
+        base_page = BasePage(driver)
+        current_url = base_page.get_current_url()
 
         assert 'Modal_modal_opened__3ISw4' not in actual_result
-        assert driver.current_url == main_page.base_url
+        assert current_url == main_page.base_url
 
     @allure.title('Проверка увеличения счетчика при добавления ингредиента в заказ')
     def test_counter_ingredient_bun(self, driver):
