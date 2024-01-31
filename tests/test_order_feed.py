@@ -1,5 +1,3 @@
-import time
-
 import allure
 
 from pages.login_page import LoginPageHelper
@@ -61,7 +59,6 @@ class TestOrderFeed:
         login_page.click_on_button_login()
         main_page.add_ingredient_to_order()
         main_page.click_on_button_make_order()
-        time.sleep(2)
         expected_result = main_page.get_number_order_in_modal_order()
         main_page.click_on_button_close_modal_order()
         main_page.wait_hidden_loader()
@@ -107,12 +104,10 @@ class TestOrderFeed:
         login_page.click_on_button_login()
         main_page.add_ingredient_to_order()
         main_page.click_on_button_make_order()
-        time.sleep(2)
         expected_result = main_page.get_number_order_in_modal_order()
         main_page.click_on_button_close_modal_order()
         main_page.wait_hidden_loader()
         main_page.click_on_link_order_feed()
-        time.sleep(3)
         order_feed_page = OrderFeedPageHelper(driver)
         actual_result = order_feed_page.get_order_in_work()
 
