@@ -32,7 +32,7 @@ class MainPageHelper(BasePage):
 
     @allure.step('Закрываем модальное окно кликом по крестику')
     def click_on_button_close_ingredient(self):
-        self.find_element(MainPageLocators.button_close_modal_ingredient, wait_time=5).click()
+        self.find_element(MainPageLocators.button_close_modal, wait_time=5).click()
 
     @allure.step('Добавляем ингредиент в заказ')
     def add_ingredient_to_order(self):
@@ -59,7 +59,7 @@ class MainPageHelper(BasePage):
 
     @allure.step('Закрываем модальное окно с заказом')
     def click_on_button_close_modal_order(self):
-        self.find_element(MainPageLocators.button_close_modal_order, wait_time=3).click()
+        self.find_element(MainPageLocators.button_close_modal, wait_time=3).click()
 
     @allure.step('Получаем номер созданного заказа в модальном окне')
     def get_number_order_in_modal_order(self):
