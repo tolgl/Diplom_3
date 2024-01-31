@@ -1,4 +1,3 @@
-import time
 import allure
 
 from pages.base_page import BasePage
@@ -83,7 +82,6 @@ class TestBasicFunctionality:
         login_page.click_on_button_login()
         main_page.add_ingredient_to_order()
         main_page.click_on_button_make_order()
-        time.sleep(1)
         actual_result = main_page.get_number_order_in_modal_order()
 
         assert 'Modal_modal_opened__3ISw4' in main_page.get_class_modal_order()
