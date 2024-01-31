@@ -29,3 +29,6 @@ class BasePage:
     def wait_hidden_loader(self):
         return WebDriverWait(self.driver, 5).until(
             expected_conditions.invisibility_of_element(BasePageLocators.loader))
+
+    def get_current_url(self):
+        return self.driver.current_url
