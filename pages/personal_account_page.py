@@ -20,4 +20,4 @@ class PersonalAccountPageHelper(BasePage):
 
     @allure.step('Получение номера заказа в истории заказов')
     def get_number_order_in_history_order(self):
-        return self.find_element(PersonalAccountPageLocators.number_order, wait_time=5).text
+        return self.find_element(PersonalAccountPageLocators.number_order, wait_time=10).text
